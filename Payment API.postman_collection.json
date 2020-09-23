@@ -1,0 +1,2110 @@
+{
+	"info": {
+		"_postman_id": "fb6453b9-b3f2-462c-937b-cb83f9ba21fd",
+		"name": "Payment API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Sale",
+					"item": [
+						{
+							"name": "Credit Card",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amount\": \"111\",\r\n    \"currency\": \"usd\",\r\n    \"method\": \"credit_card\",\r\n    \"transaction_type\": \"sale\",\r\n    \"credit_card\": {\r\n        \"card_number\": \"4111111111111111\",\r\n        \"card_holder_name\": \"Bob Smith\",\r\n        \"exp_month\": \"01\",\r\n        \"exp_year\": \"{{FutureYear}}\",\r\n        \"cvv\": \"123\"\r\n    },\r\n    \"billing_address\": {\r\n        \"postal_code\": \"12345\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/authorize",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eCheck",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\":\"111\",\r\n  \"currency\":\"usd\",\r\n  \"method\":\"echeck\",\r\n  \"transaction_type\":\"sale\",\r\n  \"sec_code\":\"web\",\r\n  \"entry_description\": \"Donation\",\r\n  \"bank_account\":{\r\n  \"account_type\":\"personal_checking\",\r\n    \"routing_number\":\"211370545\",\r\n    \"account_number\":\"01234567890123\",\r\n    \"account_holder_name\":\"Bob Smith\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/authorize",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Token (OT - Credit Card)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\":\"111\",\r\n  \"currency\":\"usd\",\r\n  \"method\":\"card_token\",\r\n  \"transaction_type\":\"authorize\",\r\n  \"token\":{\r\n    \"token_type\":\"epicpay\",\r\n    \"token_number\":\"1000933766171111\",\r\n    \"account_holder_name\":\"Bob Smith\",\r\n    \"exp_month\":\"12\",\r\n    \"exp_year\":\"{{FutureYear}}\",\r\n    \"cvv\":\"1234\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/authorize",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Token (OT - eCheck)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\":\"111\",\r\n  \"currency\":\"usd\",\r\n  \"method\":\"echeck_token\",\r\n  \"transaction_type\":\"sale\",\r\n  \"sec_code\":\"web\",\r\n  \"token\":{\r\n    \"token_type\":\"epicpay\",\r\n    \"token_number\":\"{{OT_Token_EC}}\",\r\n    \"account_holder_name\":\"Bob Smith\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/authorize",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Token (MU - Credit Card)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\":\"111\",\r\n  \"currency\":\"usd\",\r\n  \"method\":\"card_token\",\r\n  \"transaction_type\":\"authorize\",\r\n  \"token\":{\r\n  \"token_type\":\"epicpay\",\r\n    \"token_number\":\"2000000059501111\",\r\n    \"account_holder_name\":\"Bob Smith\",\r\n    \"exp_month\":\"12\",\r\n    \"exp_year\":\"{{FutureYear}}\",\r\n    \"cvv\":\"1234\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/authorize",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Token (MU - eCheck)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\":\"111\",\r\n  \"currency\":\"usd\",\r\n  \"method\":\"echeck_token\",\r\n  \"transaction_type\":\"sale\",\r\n  \"sec_code\":\"web\",\r\n  \"token\":{\r\n    \"token_type\":\"epicpay\",\r\n    \"token_number\":\"10005555555550123\",\r\n    \"account_holder_name\":\"Bob Smith\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/authorize",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Wallet (Credit Card)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\":\"111\",\r\n  \"currency\":\"usd\",\r\n  \"method\":\"wallet\",\r\n  \"transaction_type\":\"sale\",\r\n  \"sec_code\":\"web\",\r\n  \"wallet\":{\r\n    \"wallet_id\":\"6473A04E7F6147549D840CF7E46EC6CB\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/authorize",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Wallet (eCheck)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\":\"111\",\r\n  \"currency\":\"usd\",\r\n  \"method\":\"wallet\",\r\n  \"transaction_type\":\"sale\",\r\n  \"sec_code\":\"web\",\r\n  \"wallet\":{\r\n    \"wallet_id\":\"6473A04E7F6147549D840CF7E46EC6CB\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/authorize",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0ccbfe2d-07b1-4811-8fc9-07efc5d23fc1",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "5526c92f-732b-404c-ac74-9e68744d70af",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Authorize",
+					"item": [
+						{
+							"name": "Credit Card",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amount\": \"111\",\r\n    \"currency\": \"usd\",\r\n    \"method\": \"credit_card\",\r\n    \"transaction_type\": \"authorize\",\r\n    \"credit_card\": {\r\n        \"card_number\": \"4111111111111111\",\r\n        \"card_holder_name\": \"Bob Smith\",\r\n        \"exp_month\": \"01\",\r\n        \"exp_year\": \"{{FutureYear}}\",\r\n        \"cvv\": \"123\"\r\n    },\r\n    \"billing_address\": {\r\n        \"postal_code\": \"12345\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/authorize",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Token (Wallet - Credit Card)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\":\"111\",\r\n  \"currency\":\"usd\",\r\n  \"method\":\"wallet\",\r\n  \"transaction_type\":\"authorize\",\r\n  \"sec_code\":\"web\",\r\n  \"wallet\":{\r\n    \"wallet_id\":\"6473A04E7F6147549D840CF7E46EC6CB\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/authorize",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Token (OT - Credit Card)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\":\"111\",\r\n  \"currency\":\"usd\",\r\n  \"method\":\"card_token\",\r\n  \"transaction_type\":\"authorize\",\r\n  \"token\":{\r\n    \"token_type\":\"epicpay\",\r\n    \"token_number\":\"1000933766171111\",\r\n    \"account_holder_name\":\"Bob Smith\",\r\n    \"exp_month\":\"12\",\r\n    \"exp_year\":\"{{FutureYear}}\",\r\n    \"cvv\":\"1234\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/authorize",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Token (MU - Credit Card)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\":\"111\",\r\n  \"currency\":\"usd\",\r\n  \"method\":\"card_token\",\r\n  \"transaction_type\":\"authorize\",\r\n  \"token\":{\r\n  \"token_type\":\"epicpay\",\r\n    \"token_number\":\"2000000059501111\",\r\n    \"account_holder_name\":\"Bob Smith\",\r\n    \"exp_month\":\"12\",\r\n    \"exp_year\":\"{{FutureYear}}\",\r\n    \"cvv\":\"1234\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/authorize",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Capture",
+					"item": [
+						{
+							"name": "Capture",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"transaction_type\":\"capture\",\r\n  \"amount\":\"111\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/authorize/{{TransactionID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"authorize",
+										"{{TransactionID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Refund (Credit)",
+					"item": [
+						{
+							"name": "Refund",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"transaction_type\":\"credit\",\r\n  \"amount\":\"495\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/authorize/{{TransactionID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"authorize",
+										"{{TransactionID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Void",
+					"item": [
+						{
+							"name": "Void",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"transaction_type\":\"void\",\r\n  \"amount\":\"333\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/authorize/{{TransactionID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"authorize",
+										"{{TransactionID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "GetTransaction",
+					"item": [
+						{
+							"name": "GetTransaction (EpicPay ID)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id_source\":\"client\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/GetTransaction/{{TransactionID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"GetTransaction",
+										"{{TransactionID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetTransaction (Client ID)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id_source\":\"epicpay\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/GetTransaction/{{TransactionID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"GetTransaction",
+										"{{TransactionID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Wallets",
+			"item": [
+				{
+					"name": "AddWalletItem",
+					"item": [
+						{
+							"name": "To Existing Customer",
+							"item": [
+								{
+									"name": "via Credit Card",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "10b5c5de-fc77-49e6-86ea-5378d2701adc",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.wallet.customer_id);\r",
+													"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.wallet.wallet_id);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"method\":\"credit_card\",\r\n  \"customer_id\":\"{{CustomerID}}\",\r\n  \"credit_card\":{\r\n    \"card_number\":\"4111111111111111\",\r\n    \"card_holder_name\":\"Bob Smith\",\r\n    \"exp_month\":\"01\",\r\n    \"exp_year\":\"{{FutureYear}}\",\r\n    \"cvv\":\"123\"\r\n  }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BaseURL}}/addwalletitem/",
+											"host": [
+												"{{BaseURL}}"
+											],
+											"path": [
+												"addwalletitem",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "via eCheck",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "04218baa-2b21-482a-98fe-50e791ef5026",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.wallet.customer_id);\r",
+													"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.wallet.wallet_id);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"method\":\"echeck\",\r\n  \"bank_account\":{\r\n    \"account_type\":\"personal_checking\",\r\n    \"routing_number\":\"211370545\",\r\n    \"account_number\":\"01234567890123\",\r\n    \"account_holder_name\":\"John Thomas\"\r\n  },\r\n  \"customer_id\":\"{{CustomerID}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BaseURL}}/addwalletitem/",
+											"host": [
+												"{{BaseURL}}"
+											],
+											"path": [
+												"addwalletitem",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "via OT Token - CC",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "e3a9588e-5d1b-4256-b4fc-794064f720c9",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.wallet.customer_id);\r",
+													"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.wallet.wallet_id);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"method\":\"card_token\",\r\n  \"token\":{\r\n  \t\"token_type\":\"epicpay\",\r\n  \t\"token_number\":\"{{OT_Token_CC}}\",\r\n  \t\"account_holder_name\":\"Bob Smith\",\r\n    \"exp_month\":\"12\",\r\n    \"exp_year\":\"{{FutureYear}}\"\r\n  },\r\n  \"customer_id\":\"{{CustomerID}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BaseURL}}/addwalletitem/",
+											"host": [
+												"{{BaseURL}}"
+											],
+											"path": [
+												"addwalletitem",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "via OT Token - eCheck",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "8b05605c-4f0f-4eb7-bae5-8782954c0bcf",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.wallet.customer_id);\r",
+													"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.wallet.wallet_id);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"method\":\"echeck_token\",\r\n  \"token\":{\r\n  \t\"token_type\":\"epicpay\",\r\n  \t\"token_number\":\"{{OT_Token_EC}}\",\r\n  \t\"account_holder_name\":\"Bob Smith\"\r\n  },\r\n  \"customer_id\":\"{{CustomerID}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BaseURL}}/addwalletitem/",
+											"host": [
+												"{{BaseURL}}"
+											],
+											"path": [
+												"addwalletitem",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "via MU Token - CC",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "df8cec14-9e24-479d-9be5-0b662b8b1cdf",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.wallet.customer_id);\r",
+													"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.wallet.wallet_id);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"customer_id\":\"{{CustomerID}}\",\r\n  \"method\":\"card_token\",\r\n  \"token\":{\r\n    \"token_type\":\"epicpay\",\r\n  \t\"token_number\":\"{{MU_Token_CC}}\",\r\n  \t\"account_holder_name\":\"Bob Smith\",\r\n  \t\"exp_month\":\"12\",\r\n    \"exp_year\":\"29\",\r\n\t\"cvv\":\"1234\"\r\n  }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BaseURL}}/addwalletitem/",
+											"host": [
+												"{{BaseURL}}"
+											],
+											"path": [
+												"addwalletitem",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "via MU Token - eCheck",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f9d9f813-bc92-479f-9b56-81184f7fe0bb",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.wallet.customer_id);\r",
+													"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.wallet.wallet_id);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"customer_id\":\"{{CustomerID}}\",\r\n  \"method\":\"echeck_token\",\r\n  \"token\":{\r\n  \t\"token_type\":\"epicpay\",\r\n  \t\"token_number\":\"{{MU_Token_EC}}\",\r\n  \t\"account_holder_name\":\"Bob Smith\"\r\n  }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BaseURL}}/addwalletitem/",
+											"host": [
+												"{{BaseURL}}"
+											],
+											"path": [
+												"addwalletitem",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "To New Customer",
+							"item": [
+								{
+									"name": "via Credit Card",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "b6b0a460-2e60-4c49-81f7-08882262af26",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.wallet.customer_id);\r",
+													"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.wallet.wallet_id);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"method\":\"credit_card\",\r\n  \"credit_card\":{\r\n    \"card_number\":\"4111111111111111\",\r\n    \"card_holder_name\":\"Bob Smith\",\r\n    \"exp_month\":\"09\",\r\n    \"exp_year\":\"2022\",\r\n    \"cvv\":\"123\"\r\n  },\r\n  \"customer_address\":{\r\n    \"first_name\":\"Bob\",\r\n    \"last_name\":\"Smith\",\r\n    \"company_name\":\"SmithCo.\",\r\n    \"address_line_1\":\"100 James Ave.\",\r\n    \"address_line_2\":\"Apt 5\",\r\n    \"city\":\"Polkton\",\r\n    \"state_province\":\"TN\",\r\n    \"postal_code\":\"34044\",\r\n    \"country_code\":\"US\",\r\n    \"email\":\"bobandmarysmith@example.com\",\r\n    \"phone\":{ \"number\":\"3235554444\" }\r\n  }\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BaseURL}}/addwalletitem/",
+											"host": [
+												"{{BaseURL}}"
+											],
+											"path": [
+												"addwalletitem",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "via eCheck",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d5f518d4-2f54-42e5-b158-0a224e0ba8fa",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.wallet.customer_id);\r",
+													"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.wallet.wallet_id);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"method\":\"echeck\",\r\n  \"bank_account\":{\r\n    \"account_type\":\"personal_checking\",\r\n    \"routing_number\":\"211370545\",\r\n    \"account_number\":\"01234567890123\",\r\n    \"account_holder_name\":\"John Thomas\"\r\n  },\r\n  \"customer_address\":{\r\n    \"first_name\":\"John\",\r\n    \"last_name\":\"Thomas\"\r\n  }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BaseURL}}/addwalletitem/",
+											"host": [
+												"{{BaseURL}}"
+											],
+											"path": [
+												"addwalletitem",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "via OT Token - CC",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "e60b18ae-aff1-4183-a431-629775cc0525",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.wallet.customer_id);\r",
+													"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.wallet.wallet_id);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"method\":\"card_token\",\r\n  \"token\":{\r\n  \t\"token_type\":\"epicpay\",\r\n  \t\"token_number\":\"{{OT_Token_CC}}\",\r\n  \t\"account_holder_name\":\"Bob Smith\",\r\n    \"exp_month\":\"12\",\r\n    \"exp_year\":\"{{FutureYear}}\"\r\n  },\r\n  \"customer_address\":{\r\n    \"first_name\":\"John\",\r\n    \"last_name\":\"Henry\",\r\n    \"address_line_1\":\"200 W Main St.\",\r\n    \"city\":\"Juarez\",\r\n    \"state_province\":\"NM\",\r\n    \"postal_code\":\"55044\",\r\n    \"country_code\":\"US\"\r\n  }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BaseURL}}/addwalletitem/",
+											"host": [
+												"{{BaseURL}}"
+											],
+											"path": [
+												"addwalletitem",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "via OT Token - eCheck",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "b803022a-5d32-41f0-9457-fd4a3134bc27",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.wallet.customer_id);\r",
+													"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.wallet.wallet_id);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"method\":\"echeck_token\",\r\n  \"token\":{\r\n  \t\"token_type\":\"epicpay\",\r\n  \t\"token_number\":\"{{OT_Token_EC}}\",\r\n  \t\"account_holder_name\":\"Bob Smith\"\r\n  },\r\n  \"customer_address\":{\r\n    \"first_name\":\"John\",\r\n    \"last_name\":\"Henry\",\r\n    \"address_line_1\":\"200 W Main St.\",\r\n    \"city\":\"Juarez\",\r\n    \"state_province\":\"NM\",\r\n    \"postal_code\":\"55044\",\r\n    \"country_code\":\"US\"\r\n  }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BaseURL}}/addwalletitem/",
+											"host": [
+												"{{BaseURL}}"
+											],
+											"path": [
+												"addwalletitem",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "via MU Token - CC",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "799a5e89-cb3e-465d-bb32-8df56738a901",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.wallet.customer_id);\r",
+													"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.wallet.wallet_id);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"customer_address\": {\r\n    \"first_name\": \"John\",\r\n    \"last_name\": \"Henry\",\r\n    \"address_line_1\": \"200 W Main St.\",\r\n    \"city\": \"Juarez\",\r\n    \"state_province\": \"NM\",\r\n    \"postal_code\": \"55044\",\r\n    \"country_code\": \"US\"\r\n  },\r\n  \"method\": \"card_token\",\r\n  \"token\": {\r\n    \"token_type\": \"epicpay\",\r\n    \"token_number\": \"{{MU_Token_CC}}\",\r\n    \"account_holder_name\": \"Bob Smith\",\r\n    \"exp_month\": \"12\",\r\n    \"exp_year\": \"29\",\r\n    \"cvv\": \"1234\"\r\n  }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BaseURL}}/addwalletitem/",
+											"host": [
+												"{{BaseURL}}"
+											],
+											"path": [
+												"addwalletitem",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "via MU Token - eCheck",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "0be59803-78cf-4cd0-ac49-9dd36572e79a",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.wallet.customer_id);\r",
+													"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.wallet.wallet_id);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"customer_address\":{\r\n    \"first_name\":\"John\",\r\n    \"last_name\":\"Henry\",\r\n    \"address_line_1\":\"200 W Main St.\",\r\n    \"city\":\"Juarez\",\r\n    \"state_province\":\"NM\",\r\n    \"postal_code\":\"55044\",\r\n    \"country_code\":\"US\"\r\n  },\r\n  \"method\":\"echeck_token\",\r\n  \"token\":{\r\n  \t\"token_type\":\"epicpay\",\r\n  \t\"token_number\":\"{{MU_Token_EC}}\",\r\n  \t\"account_holder_name\":\"Bob Smith\"\r\n  }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BaseURL}}/addwalletitem/",
+											"host": [
+												"{{BaseURL}}"
+											],
+											"path": [
+												"addwalletitem",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "EditWalletItem",
+					"item": [
+						{
+							"name": "Credit Card Wallet",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"account_holder_name\":\"John Thomas\",\r\n  \"exp_month\":\"10\",\r\n  \"exp_year\":\"2022\",\r\n  \"billing_address\":{\r\n    \"first_name\":\"Bob\",\r\n    \"last_name\":\"Smith\",\r\n    \"address_line_1\":\"100 James Ave.\",\r\n    \"address_line_2\":\"Apt 5\",\r\n    \"city\":\"Polkton\",\r\n    \"state_province\":\"TN\",\r\n    \"postal_code\":\"34044\",\r\n    \"country_code\":\"US\",\r\n    \"email\":\"bobandmarysmith@example.com\",\r\n    \"phone\":{\r\n      \"number\":\"3235554444\",  \r\n      \"type\":\"landline\" \r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/editwalletitem/{{WalletID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"editwalletitem",
+										"{{WalletID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eCheck Wallet",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"account_holder_name\":\"Bob and Mary Smith\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/editwalletitem/{{WalletID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"editwalletitem",
+										"{{WalletID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "DeleteWalletItem",
+					"item": [
+						{
+							"name": "DeleteWalletItem",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/deletewalletitem/{{WalletID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"deletewalletitem",
+										"{{WalletID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "cea526f5-66f4-4653-988f-8af192a8b813",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a7d55e4b-c3b9-490f-8b69-371c64ecef10",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "EditCustomer",
+					"item": [
+						{
+							"name": "EditCustomer",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_customer_id\":\"ABX1203312\",\r\n  \"customer_address\":{\r\n    \"first_name\":\"Bobby\",\r\n    \"last_name\":\"Shmidt\",\r\n    \"address_line_1\":\"1223 W Colander St.\",\r\n    \"address_line_2\":\"Suite 400\",\r\n    \"city\":\"Topeka\",\r\n    \"state_province\":\"KS\",\r\n    \"postal_code\":\"29232\",\r\n    \"country_code\":\"US\",\r\n    \"company\":\"123\",\r\n    \"email\":\"abc@example.com\",\r\n    \"phone\":{\r\n      \"number\":\"3335554444\",\r\n      \"type\":\"mobile\"\r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/editcustomer/{{CustomerID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"editcustomer",
+										"{{CustomerID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "665cd81b-53a7-4a05-b1e1-883f202e7b0e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1175ac1d-50f1-4955-9c29-f0f6ccf70834",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Subscriptions",
+			"item": [
+				{
+					"name": "AddSubscription",
+					"item": [
+						{
+							"name": "via Credit Card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9214f1b7-53d1-42c5-a230-ca8f2910cceb",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.subscription.customer_id);\r",
+											"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.subscription.wallet_id);\r",
+											"postman.setEnvironmentVariable(\"SubscriptionID\", jsonData.result.subscription.subscription_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"currency\": \"usd\",\r\n  \"amount\": 220,\r\n  \"frequency\": \"every_n_weeks\",\r\n  \"period\": 2,\r\n  \"next_payment_date\": \"2021-12-03\",\r\n  \"alert_after\": true,\r\n  \"method\": \"credit_card\",\r\n  \"credit_card\": {\r\n    \"card_holder_name\": \"Bob Smith\",\r\n    \"card_number\": \"4111111111111111\",\r\n    \"cvv\": \"349\",\r\n    \"exp_month\": \"01\",\r\n    \"exp_year\": \"29\"\r\n  },\r\n  \"customer_address\": {\r\n    \"address_line_1\": \"201 Ever Ln.\",\r\n    \"address_line_2\": \"Suite 201\",\r\n    \"city\": \"Overland\",\r\n    \"company_name\": \"Texas Lone Star\",\r\n    \"country_code\": \"US\",\r\n    \"email\": \"bsmith@epicpay.com\",\r\n    \"first_name\": \"Bob\",\r\n    \"last_name\": \"Smith\",\r\n    \"postal_code\": \"66023-3747\",\r\n    \"state_province\": \"KS\",\r\n    \"phone\": {\r\n      \"number\": \"2014791255\",\r\n      \"type\": \"mobile\"\r\n    }\r\n  },\r\n  \"billing_address\": {\r\n    \"address_line_1\": \"201 Ever Ln.\",\r\n    \"address_line_2\": \"Suite 201\",\r\n    \"city\": \"Overland\",\r\n    \"company_name\": \"Texas Lone Star\",\r\n    \"country_code\": \"US\",\r\n    \"email\": \"bsmith@epicpay.com\",\r\n    \"first_name\": \"Bob\",\r\n    \"last_name\": \"Smith\",\r\n    \"postal_code\": \"66023-3747\",\r\n    \"state_province\": \"KS\",\r\n    \"phone\": {\r\n      \"number\": \"2014791255\",\r\n      \"type\": \"mobile\"\r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/AddSubscription",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"AddSubscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "via OT Token - CC",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c90f2f7e-3e0d-416f-9df1-3d13b59689b8",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.subscription.customer_id);\r",
+											"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.subscription.wallet_id);\r",
+											"postman.setEnvironmentVariable(\"SubscriptionID\", jsonData.result.subscription.subscription_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_order_id\":\"ABC10001\",\r\n  \"amount\":\"1000\",\r\n  \"currency\":\"usd\",\r\n  \"alert_after\":\"yes\",\r\n  \"alert_days_before\":\"7\",\r\n  \"next_payment_date\":\"2028-04-25\",\r\n  \"frequency\":\"twice_every_month\",\r\n  \"date_of_month_1\":\"1\",\r\n  \"date_of_month_2\":\"31\",\r\n  \"method\":\"card_token\",\r\n  \"token\":{\r\n    \"token_type\":\"epicpay\",\r\n  \t\"token_number\":\"{{OT_Token_CC}}\",\r\n  \t\"account_holder_name\":\"Bob Smith\",\r\n  \t\"exp_month\":\"12\",\r\n    \"exp_year\":\"{{FutureYear}}\",\r\n\t  \"cvv\":\"1234\"\r\n  },\r\n  \"customer_address\":{\r\n\t    \"first_name\":\"Bob\",\r\n\t    \"last_name\":\"Smith\",\r\n\t    \"company_name\":\"EE Sports\",\r\n\t    \"address_line_1\":\"100 James Ave.\",\r\n\t    \"address_line_2\":\"Apt 5\",\r\n\t    \"city\":\"Polkton\",\r\n\t    \"state_province\":\"TN\",\r\n\t    \"postal_code\":\"34044\",\r\n\t    \"country_code\":\"US\",\r\n\t    \"email\":\"bobandmarysmith@example.com\",\r\n\t    \"phone\":{ \"number\":\"3235554444\", \"type\":\"landline\" }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/AddSubscription",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"AddSubscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "via OT Token - eCheck",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f06f5aa9-e857-4e8e-9e7a-b83bdcdb9cd9",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.subscription.customer_id);\r",
+											"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.subscription.wallet_id);\r",
+											"postman.setEnvironmentVariable(\"SubscriptionID\", jsonData.result.subscription.subscription_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_order_id\":\"ABC10001\",\r\n  \"amount\":\"1000\",\r\n  \"currency\":\"usd\",\r\n  \"alert_after\":\"yes\",\r\n  \"alert_days_before\":\"7\",\r\n  \"next_payment_date\":\"2028-04-25\",\r\n  \"frequency\":\"twice_every_month\",\r\n  \"date_of_month_1\":\"1\",\r\n  \"date_of_month_2\":\"31\",\r\n  \"method\":\"card_token\",\r\n  \"token\":{\r\n  \t\"token_type\":\"epicpay\",\r\n  \t\"token_number\":\"{{OT_Token_EC}}\",\r\n  \t\"account_holder_name\":\"Bob Smith\"\r\n  },\r\n  \"customer_address\":{\r\n\t    \"first_name\":\"Bob\",\r\n\t    \"last_name\":\"Smith\",\r\n\t    \"company_name\":\"EE Sports\",\r\n\t    \"address_line_1\":\"100 James Ave.\",\r\n\t    \"address_line_2\":\"Apt 5\",\r\n\t    \"city\":\"Polkton\",\r\n\t    \"state_province\":\"TN\",\r\n\t    \"postal_code\":\"34044\",\r\n\t    \"country_code\":\"US\",\r\n\t    \"email\":\"bobandmarysmith@example.com\",\r\n\t    \"phone\":{ \"number\":\"3235554444\", \"type\":\"landline\" }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/AddSubscription",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"AddSubscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "via MU Token - CC",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d1b5eb27-f0bb-4fe0-a312-742d3d9c0959",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.subscription.customer_id);\r",
+											"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.subscription.wallet_id);\r",
+											"postman.setEnvironmentVariable(\"SubscriptionID\", jsonData.result.subscription.subscription_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_order_id\":\"ABC10001\",\r\n  \"amount\":\"1000\",\r\n  \"currency\":\"usd\",\r\n  \"alert_after\":\"yes\",\r\n  \"alert_days_before\":\"7\",\r\n  \"next_payment_date\":\"2028-04-25\",\r\n  \"frequency\":\"twice_every_month\",\r\n  \"date_of_month_1\":\"1\",\r\n  \"date_of_month_2\":\"31\",\r\n  \"method\":\"card_token\",\r\n  \"token\":{\r\n    \"token_type\":\"epicpay\",\r\n  \t\"token_number\":\"{{MU_Token_CC}}\",\r\n  \t\"account_holder_name\":\"Bob Smith\",\r\n  \t\"exp_month\":\"12\",\r\n    \"exp_year\":\"{{FutureYear}}\",\r\n\t  \"cvv\":\"1234\"\r\n  },\r\n  \"customer_address\":{\r\n\t    \"first_name\":\"Bob\",\r\n\t    \"last_name\":\"Smith\",\r\n\t    \"company_name\":\"EE Sports\",\r\n\t    \"address_line_1\":\"100 James Ave.\",\r\n\t    \"address_line_2\":\"Apt 5\",\r\n\t    \"city\":\"Polkton\",\r\n\t    \"state_province\":\"TN\",\r\n\t    \"postal_code\":\"34044\",\r\n\t    \"country_code\":\"US\",\r\n\t    \"email\":\"bobandmarysmith@example.com\",\r\n\t    \"phone\":{ \"number\":\"3235554444\", \"type\":\"landline\" }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/AddSubscription",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"AddSubscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "via MU Token - eCheck",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "07e0aaf7-ebf4-4e93-8af7-a25664d63029",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.subscription.customer_id);\r",
+											"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.subscription.wallet_id);\r",
+											"postman.setEnvironmentVariable(\"SubscriptionID\", jsonData.result.subscription.subscription_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_order_id\":\"ABC10001\",\r\n  \"amount\":\"1000\",\r\n  \"currency\":\"usd\",\r\n  \"alert_after\":\"yes\",\r\n  \"alert_days_before\":\"7\",\r\n  \"next_payment_date\":\"2028-04-25\",\r\n  \"frequency\":\"twice_every_month\",\r\n  \"date_of_month_1\":\"1\",\r\n  \"date_of_month_2\":\"31\",\r\n  \"method\":\"card_token\",\r\n  \"token\":{\r\n  \t\"token_type\":\"epicpay\",\r\n  \t\"token_number\":\"{{MU_Token_EC}}\",\r\n  \t\"account_holder_name\":\"Bob Smith\"\r\n  },\r\n  \"customer_address\":{\r\n\t    \"first_name\":\"Bob\",\r\n\t    \"last_name\":\"Smith\",\r\n\t    \"company_name\":\"EE Sports\",\r\n\t    \"address_line_1\":\"100 James Ave.\",\r\n\t    \"address_line_2\":\"Apt 5\",\r\n\t    \"city\":\"Polkton\",\r\n\t    \"state_province\":\"TN\",\r\n\t    \"postal_code\":\"34044\",\r\n\t    \"country_code\":\"US\",\r\n\t    \"email\":\"bobandmarysmith@example.com\",\r\n\t    \"phone\":{ \"number\":\"3235554444\", \"type\":\"landline\" }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/AddSubscription",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"AddSubscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "via eCheck",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "45dd3cbf-7b32-4a25-8595-4a9b1ca2a934",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.subscription.customer_id);\r",
+											"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.subscription.wallet_id);\r",
+											"postman.setEnvironmentVariable(\"SubscriptionID\", jsonData.result.subscription.subscription_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amount\": 120,\r\n    \"currency\": \"usd\",\r\n    \"method\":\"echeck\",\r\n    \"frequency\": \"twice_every_month\",\r\n    \"date_of_month_1\": \"1\",\r\n    \"date_of_month_2\": \"15\",\r\n    \"next_payment_date\": \"2029-07-04\",\r\n    \"total_payments\": \"12\",\r\n    \"alert_after\": \"true\",\r\n    \"bank_account\": {\r\n        \"account_type\": \"personal_checking\",\r\n        \"routing_number\": \"111000025\",\r\n        \"account_number\": \"87654321\",\r\n        \"account_holder_name\": \"John Doe\"\r\n    },\r\n    \"sec_code\": \"CCD\",\r\n    \"entry_description\": \"Payment\",\r\n    \"customer_address\": {\r\n        \"address_line_1\": \"201 Ever Ln.\",\r\n        \"address_line_2\": \"Suite 201\",\r\n        \"city\": \"Overland\",\r\n        \"company_name\": \"Texas Lone Star\",\r\n        \"country_code\": \"US\",\r\n        \"email\": \"bsmith@epicpay.com\",\r\n        \"first_name\": \"Bob\",\r\n        \"last_name\": \"Smith\",\r\n        \"postal_code\": \"66023-3747\",\r\n        \"state_province\": \"KS\",\r\n        \"phone\": {\r\n          \"number\": \"2014791255\",\r\n          \"type\": \"mobile\"\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/AddSubscription",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"AddSubscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "via Wallet (CC)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e59d683b-7b26-400c-9a45-fee1e3f6a24c",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.subscription.customer_id);\r",
+											"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.subscription.wallet_id);\r",
+											"postman.setEnvironmentVariable(\"SubscriptionID\", jsonData.result.subscription.subscription_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_order_id\": \"ABC10002\",\r\n  \"currency\": \"usd\",\r\n  \"amount\": \"1250\",\r\n  \"secondary_amount\": 20,\r\n  \"last_payment_date\": \"2028-12-25\",\r\n  \"last_amount\": 500,\r\n  \"last_secondary_amount\": 50,\r\n  \"frequency\": \"every_n_months\",\r\n  \"period\": \"1\",\r\n  \"next_payment_date\": \"2028-04-25\",\r\n  \"alert_after\": true,\r\n  \"method\": \"wallet\",\r\n  \"wallet\":{\r\n    \"wallet_id\": \"{{WalletID}}\",\r\n    \"cvv\": \"123\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/AddSubscription",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"AddSubscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "via Wallet (EC)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "22f9e990-dc46-48f7-8dac-9443bae089e4",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.subscription.customer_id);\r",
+											"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.subscription.wallet_id);\r",
+											"postman.setEnvironmentVariable(\"SubscriptionID\", jsonData.result.subscription.subscription_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_order_id\": \"ABC10002\",\r\n  \"currency\": \"usd\",\r\n  \"amount\": \"1250\",\r\n  \"secondary_amount\": 20,\r\n  \"last_payment_date\": \"2028-12-25\",\r\n  \"last_amount\": 500,\r\n  \"last_secondary_amount\": 50,\r\n  \"frequency\": \"every_n_months\",\r\n  \"period\": \"1\",\r\n  \"next_payment_date\": \"2028-04-25\",\r\n  \"alert_after\": true,\r\n  \"method\": \"wallet\",\r\n  \"wallet\":{\r\n    \"wallet_id\": \"{{WalletID}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/AddSubscription",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"AddSubscription"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "EditSubscription",
+					"item": [
+						{
+							"name": "via eCheck",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b0c1da20-7a14-41f7-a821-6f0fa2838cce",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.subscription.customer_id);\r",
+											"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.subscription.wallet_id);\r",
+											"postman.setEnvironmentVariable(\"SubscriptionID\", jsonData.result.subscription.subscription_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amount\": 120,\r\n    \"currency\": \"usd\",\r\n    \"method\":\"echeck\",\r\n    \"frequency\": \"twice_every_month\",\r\n    \"date_of_month_1\": \"1\",\r\n    \"date_of_month_2\": \"15\",\r\n    \"next_payment_date\": \"2029-07-04\",\r\n    \"total_payments\": \"12\",\r\n    \"alert_after\": \"true\",\r\n    \"bank_account\": {\r\n        \"account_type\": \"personal_checking\",\r\n        \"routing_number\": \"111000025\",\r\n        \"account_number\": \"87654321\",\r\n        \"account_holder_name\": \"John Doe\"\r\n    },\r\n    \"sec_code\": \"CCD\",\r\n    \"entry_description\": \"Payment\",\r\n    \"customer_address\": {\r\n        \"address_line_1\": \"201 Ever Ln.\",\r\n        \"address_line_2\": \"Suite 201\",\r\n        \"city\": \"Overland\",\r\n        \"company_name\": \"Texas Lone Star\",\r\n        \"country_code\": \"US\",\r\n        \"email\": \"bsmith@epicpay.com\",\r\n        \"first_name\": \"Bob\",\r\n        \"last_name\": \"Smith\",\r\n        \"postal_code\": \"66023-3747\",\r\n        \"state_province\": \"KS\",\r\n        \"phone\": {\r\n          \"number\": \"2014791255\",\r\n          \"type\": \"mobile\"\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/editsubscription/{{SubscriptionID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"editsubscription",
+										"{{SubscriptionID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "via Wallet (CC)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d02c05a3-b4a0-4325-9306-c150e4da10fa",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.subscription.customer_id);\r",
+											"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.subscription.wallet_id);\r",
+											"postman.setEnvironmentVariable(\"SubscriptionID\", jsonData.result.subscription.subscription_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_order_id\": \"ABC10002\",\r\n  \"currency\": \"usd\",\r\n  \"amount\": 1250,\r\n  \"last_amount\": 500,\r\n  \"next_payment_date\": \"2028-04-25\",\r\n  \"frequency\": \"every_n_months\",\r\n  \"period\": \"3\",\r\n  \"last_payment_date\": \"2028-12-25\",\r\n  \"alert_after\": true,\r\n  \"method\": \"wallet\",\r\n  \"wallet\":{\r\n    \"wallet_id\": \"{{WalletID}}\",\r\n    \"cvv\": \"123\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/editsubscription/{{SubscriptionID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"editsubscription",
+										"{{SubscriptionID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "via Wallet (EC)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "eab1fd05-7758-43ad-b760-ef752192ef9d",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.subscription.customer_id);\r",
+											"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.subscription.wallet_id);\r",
+											"postman.setEnvironmentVariable(\"SubscriptionID\", jsonData.result.subscription.subscription_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_order_id\": \"ABC10002\",\r\n  \"currency\": \"usd\",\r\n  \"amount\": 1250,\r\n  \"last_amount\": 500,\r\n  \"next_payment_date\": \"2028-04-25\",\r\n  \"frequency\": \"every_n_months\",\r\n  \"period\": \"3\",\r\n  \"last_payment_date\": \"2028-12-25\",\r\n  \"alert_after\": true,\r\n  \"method\": \"wallet\",\r\n  \"wallet\":{\r\n    \"wallet_id\": \"{{WalletID}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/editsubscription/{{SubscriptionID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"editsubscription",
+										"{{SubscriptionID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "via Credit Card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "41fa769b-3807-4a46-8505-7081d4ccdaa2",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.subscription.customer_id);\r",
+											"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.subscription.wallet_id);\r",
+											"postman.setEnvironmentVariable(\"SubscriptionID\", jsonData.result.subscription.subscription_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_order_id\": \"bshjgh1234543\",\r\n  \"currency\": \"usd\",\r\n  \"amount\": 220,\r\n  \"secondary_amount\": 20,\r\n  \"frequency\": \"every_n_weeks\",\r\n  \"next_payment_date\": \"2027-12-03\",\r\n  \"period\": 2,\r\n  \"alert_after\": true,\r\n  \"method\": \"credit_card\",\r\n  \"credit_card\": {\r\n    \"card_holder_name\": \"Bob Smith\",\r\n    \"card_number\": \"4111111111111111\",\r\n    \"cvv\": \"349\",\r\n    \"exp_month\": \"01\",\r\n    \"exp_year\": \"29\"\r\n  },\r\n  \"billing_address\": {\r\n    \"address_line_1\": \"201 Ever Ln.\",\r\n    \"address_line_2\": \"Suite 201\",\r\n    \"city\": \"Overland\",\r\n    \"company_name\": \"Texas Lone Star\",\r\n    \"country_code\": \"US\",\r\n    \"email\": \"DaffySnow@epicpay.com\",\r\n    \"first_name\": \"Daffy\",\r\n    \"last_name\": \"Snow\",\r\n    \"phone\": {\r\n      \"number\": \"2014791255\",\r\n      \"type\": \"mobile\"\r\n    },\r\n    \"postal_code\": \"66023-3747\",\r\n    \"state_province\": \"KS\"\r\n  },\r\n  \"client_customer_id\": \"yiuLpoWAA65434\",\r\n  \"customer_address\": {\r\n    \"address_line_1\": \"201 Ever Ln.\",\r\n    \"address_line_2\": \"Suite 201\",\r\n    \"city\": \"Overland\",\r\n    \"company_name\": \"Texas Lone Star\",\r\n    \"country_code\": \"US\",\r\n    \"email\": \"bsmith@epicpay.com\",\r\n    \"first_name\": \"Bob\",\r\n    \"last_name\": \"Smith\",\r\n    \"phone\": {\r\n      \"number\": \"2014791255\",\r\n      \"type\": \"mobile\"\r\n    },\r\n    \"postal_code\": \"66023-3747\",\r\n    \"state_province\": \"KS\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/editsubscription/{{SubscriptionID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"editsubscription",
+										"{{SubscriptionID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "DeleteSubscription",
+					"item": [
+						{
+							"name": "Delete",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/DeleteSubscription/{{SubscriptionID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"DeleteSubscription",
+										"{{SubscriptionID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "SuspendSubscription",
+					"item": [
+						{
+							"name": "Suspend",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/subscription/suspend/{{SubscriptionID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"subscription",
+										"suspend",
+										"{{SubscriptionID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "UnsuspendSubscription",
+					"item": [
+						{
+							"name": "Unsuspend",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/subscription/unsuspend/{{SubscriptionID}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"subscription",
+										"unsuspend",
+										"{{SubscriptionID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tokens",
+			"item": [
+				{
+					"name": "RequestJWT",
+					"item": [
+						{
+							"name": "RequestJWT",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7d9ea8e1-269c-42ea-9468-1231b78aabae",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"JWT\", jsonData.result.jwt);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ip\":\"{{IP}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/RequestJWT",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"RequestJWT"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Register Token (MultiUse)",
+					"item": [
+						{
+							"name": "via Credit Card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f283ea55-35a1-46c6-a67c-55bec37d297a",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"OT_Token_CC\", jsonData.result.token.token_number);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"method\":\"credit_card\",\r\n  \"credit_card\":{\r\n    \"card_number\":\"4111111111111111\",\r\n    \"card_holder_name\":\"Bob Johnson\",\r\n    \"exp_month\":\"12\",\r\n    \"exp_year\":\"2022\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/RegisterToken",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"RegisterToken"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "via Credit Card (Extended Payload)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "411c3752-9704-4c4e-b624-f4593ab15f25",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"OT_Token_CC\", jsonData.result.token.token_number);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"method\":\"credit_card\",\r\n  \"credit_card\":{\r\n    \"card_number\":\"4111111111111111\",\r\n    \"card_holder_name\":\"Bob Johnson\",\r\n    \"exp_month\":\"12\",\r\n    \"exp_year\":\"2022\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/RegisterTokenExt",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"RegisterTokenExt"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "via eCheck",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ff18072b-93ad-4b0b-bb2e-51bdeda23a0d",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"OT_Token_EC\", jsonData.result.token.token_number);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"method\":\"echeck\",\r\n  \"bank_account\":{\r\n    \"account_holder_name\":\"Bob Johnson\",\r\n    \"account_type\":\"personal_checking\",\r\n    \"routing_number\":\"211370545\",\r\n    \"account_number\":\"01234567890123\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/RegisterToken",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"RegisterToken"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "via OT Token - CC",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"method\":\"card_token\",\r\n  \"token\":{\r\n    \"token_type\":\"epicpay\",\r\n    \"token_number\":\"{{OT_Token_CC}}\",\r\n    \"account_holder_name\":\"Bob Johnson\",\r\n    \"exp_month\":\"12\",\r\n    \"exp_year\":\"2022\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/RegisterToken",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"RegisterToken"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "via OT Token - eCheck",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"method\":\"echeck_token\",\r\n  \"token\":{\r\n    \"token_type\":\"epicpay\",\r\n    \"token_number\":\"{{OT_Token_EC}}\",\r\n    \"account_holder_name\":\"Bob Johnson\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/RegisterToken",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"RegisterToken"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "{{APIKeyID}}",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{Password}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c1fec877-25db-4ecd-bad5-e1c92081d3a3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "61c6c85d-554a-4f4e-8737-1c8fa7941a8f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

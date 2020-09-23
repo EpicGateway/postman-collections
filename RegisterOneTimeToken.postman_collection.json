@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "1db4f257-82e0-4a18-baaf-b30676b2bd4c",
+		"name": "RegisterOneTimeToken",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "via Credit Card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4897f5ee-e06a-405b-a2e9-35b233cf8e08",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"OT_Token_CC\", jsonData.result.token.token_number);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"method\":\"credit_card\",\r\n  \"account_number\":\"4111111111111111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/RegisterOneTimeToken",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"RegisterOneTimeToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "via eCheck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "33103c4f-8c92-42fc-bf03-090e866a8093",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"OT_Token_EC\", jsonData.result.token.token_number);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"method\":\"eCheck\",\t\r\n\t\"bank_account_type\":\"Personal_Checking\",\r\n\t\"account_number\":\"01234567890123\",\r\n\t\"routing_number\":\"211370545\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/RegisterOneTimeToken",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"RegisterOneTimeToken"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{JWT}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "0676b4b1-e254-4011-ba33-2282d4368afc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e4ee6c44-9e85-47c2-a087-9d6330385d5c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

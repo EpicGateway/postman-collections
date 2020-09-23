@@ -1,0 +1,377 @@
+{
+	"info": {
+		"_postman_id": "e50b3151-38ce-4e5a-8967-41549bfdadbe",
+		"name": "Reporting API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Deposits",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"start_date\": \"2019-08-05\",\r\n  \"end_date\": \"2019-08-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL_Reports}}/GetReport/deposits",
+							"host": [
+								"{{BaseURL_Reports}}"
+							],
+							"path": [
+								"GetReport",
+								"deposits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deposits-Detail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"start_date\": \"2019-08-05\",\r\n  \"end_date\": \"2019-08-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL_Reports}}/GetReport/deposits-detail",
+							"host": [
+								"{{BaseURL_Reports}}"
+							],
+							"path": [
+								"GetReport",
+								"deposits-detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Batches",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"start_date\": \"2019-08-05\",\r\n  \"end_date\": \"2019-08-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL_Reports}}/GetReport/batches",
+							"host": [
+								"{{BaseURL_Reports}}"
+							],
+							"path": [
+								"GetReport",
+								"batches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACHRejects",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"start_date\": \"2019-08-05\",\r\n  \"end_date\": \"2019-08-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL_Reports}}/GetReport/achrejects",
+							"host": [
+								"{{BaseURL_Reports}}"
+							],
+							"path": [
+								"GetReport",
+								"achrejects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TrxnActivity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"start_date\": \"2019-08-05\",\r\n  \"end_date\": \"2019-08-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL_Reports}}/GetReport/trxnactivity",
+							"host": [
+								"{{BaseURL_Reports}}"
+							],
+							"path": [
+								"GetReport",
+								"trxnactivity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Chargebacks",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"start_date\": \"2019-08-05\",\r\n  \"end_date\": \"2019-08-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL_Reports}}/GetReport/chargebacks",
+							"host": [
+								"{{BaseURL_Reports}}"
+							],
+							"path": [
+								"GetReport",
+								"chargebacks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ActiveSubscriptions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"start_date\": \"2019-08-05\",\r\n  \"end_date\": \"2019-08-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL_Reports}}/GetReport/activesubscriptions",
+							"host": [
+								"{{BaseURL_Reports}}"
+							],
+							"path": [
+								"GetReport",
+								"activesubscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SuspendedSubscriptions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"start_date\": \"2019-08-05\",\r\n  \"end_date\": \"2019-08-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL_Reports}}/GetReport/suspendedsubscriptions",
+							"host": [
+								"{{BaseURL_Reports}}"
+							],
+							"path": [
+								"GetReport",
+								"suspendedsubscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WalletTrouble",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"start_date\": \"2019-08-05\",\r\n  \"end_date\": \"2019-08-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL_Reports}}/GetReport/wallettrouble",
+							"host": [
+								"{{BaseURL_Reports}}"
+							],
+							"path": [
+								"GetReport",
+								"wallettrouble"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NewPayments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"start_date\": \"2019-08-05\",\r\n  \"end_date\": \"2019-08-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL_Reports}}/GetReport/newpayments",
+							"host": [
+								"{{BaseURL_Reports}}"
+							],
+							"path": [
+								"GetReport",
+								"newpayments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FailedPayments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"start_date\": \"2019-08-05\",\r\n  \"end_date\": \"2019-08-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL_Reports}}/GetReport/failedpayments",
+							"host": [
+								"{{BaseURL_Reports}}"
+							],
+							"path": [
+								"GetReport",
+								"failedpayments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SuccessfulPayments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"start_date\": \"2019-08-05\",\r\n  \"end_date\": \"2019-08-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL_Reports}}/GetReport/failedpayments",
+							"host": [
+								"{{BaseURL_Reports}}"
+							],
+							"path": [
+								"GetReport",
+								"failedpayments"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{Password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{APIKeyID}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2e7fdb7f-1748-4f35-a0f2-ee6294f0512e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f04898a9-d33d-4a7a-8681-ca8ff338db7c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
