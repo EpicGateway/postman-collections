@@ -9,8 +9,8 @@ A repository of Postman collections for the EpicPay Gateway Payment API.
 
 | Environment Variable | Value |
 | ------------- | ------------- |
-| APIKeyID  | {Your Key ID for the Sandbox API}  |
-| Password  | {Your Password for your Sandbox API Key}  |
+| APIKeyID  | {The Key ID for your Sandbox API Key}  |
+| Password  | {The Password for your Sandbox API Key}  |
 | IP  | {Your public IP address}  |
 | FutureYear  | {Any year in the future, not to exceed 2100 (4-digit)}  |
 | BaseURL  | https://sandbox-api.epicpay.com/payment/v1  |
