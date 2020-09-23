@@ -20,4 +20,4 @@ A repository of Postman collections for the EpicPay Gateway Payment API.
 
 Some requests depend on data returned from another request and will fail until the other request is run successfully.  Use the map below to determine which requests depend on results from other requests.  Also see the "Tests" section of each Postman request to see what data will be stored when the response for that request is received.
 
-![alt text](https://epicpay-public.s3.amazonaws.com/shared/images/devdocs/APIMap.png)
+![API Map](https://epicpay-public.s3.amazonaws.com/shared/images/devdocs/APIMap.png)
