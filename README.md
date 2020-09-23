@@ -1,5 +1,5 @@
 # EpicPay Gateway API - Postman Collections
-A repository of Postman collections for the EpicPay Gateway Payment API.
+A repository of Postman collections for the EpicPay Gateway API.
 
 ### Get Started
 
