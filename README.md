@@ -3,7 +3,7 @@ A repository of Postman collections for the EpicPay Gateway Payment API.
 
 ### Get Started
 
-1. Import the Postman collections into PostMan.
+1. Import the Postman collections into Postman.
 
 2. Update your Postman Environment to include these variables:
 
