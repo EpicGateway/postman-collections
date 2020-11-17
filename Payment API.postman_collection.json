@@ -255,7 +255,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"amount\": \"111\",\r\n    \"currency\": \"usd\",\r\n    \"method\": \"credit_card\",\r\n    \"transaction_type\": \"authorize\",\r\n    \"credit_card\": {\r\n        \"card_number\": \"4111111111111111\",\r\n        \"card_holder_name\": \"Bob Smith\",\r\n        \"exp_month\": \"01\",\r\n        \"exp_year\": \"{{FutureYear}}\",\r\n        \"cvv\": \"123\"\r\n    },\r\n    \"billing_address\": {\r\n        \"postal_code\": \"12345\"\r\n    }\r\n}",
+									"raw": "{\r\n    \"amount\": \"111\",\r\n    \"currency\": \"usd\",\r\n    \"method\": \"credit_card\",\r\n    \"transaction_type\": \"authorize\",\r\n    \"credit_card\": {\r\n        \"card_number\": \"4111111111111111\",\r\n        \"card_holder_name\": \"Bob Smith\",\r\n        \"exp_month\": \"01\",\r\n        \"exp_year\": \"{{FutureYear}}\",\r\n        \"cvv\": \"123\"\r\n    },\r\n    \"billing_address\": {\r\n        \"postal_code\": \"12345\",\r\n        \"state_province\":\"florida\"\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -476,12 +476,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/GetTransaction/{{TransactionID}}",
+									"raw": "{{BaseURL}}/gettransaction/{{TransactionID}}",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"GetTransaction",
+										"gettransaction",
 										"{{TransactionID}}"
 									]
 								}
@@ -503,12 +503,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/GetTransaction/{{TransactionID}}",
+									"raw": "{{BaseURL}}/gettransaction/{{TransactionID}}",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"GetTransaction",
+										"gettransaction",
 										"{{TransactionID}}"
 									]
 								}
@@ -1256,12 +1256,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/AddSubscription",
+									"raw": "{{BaseURL}}/addsubscription",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"AddSubscription"
+										"addsubscription"
 									]
 								}
 							},
@@ -1297,12 +1297,53 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/AddSubscription",
+									"raw": "{{BaseURL}}/addsubscription",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"AddSubscription"
+										"addsubscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "via OT Token - CC Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7c79e88d-9b80-4d01-b6ad-e51de574b102",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"CustomerID\", jsonData.result.subscription.customer_id);\r",
+											"postman.setEnvironmentVariable(\"WalletID\", jsonData.result.subscription.wallet_id);\r",
+											"postman.setEnvironmentVariable(\"SubscriptionID\", jsonData.result.subscription.subscription_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": \"154485\",\r\n  \"currency\": \"usd\",\r\n  \"method\": \"epic_token\",\r\n  \"next_payment_date\": \"2021-01-01\",\r\n  \"frequency\": \"every_n_months\",\r\n  \"period\": 1,\r\n  \"epic_token\": {\r\n    \"exp_month\": \"11\",\r\n    \"token_data\": \"{{OT_Token_CC}}\",\r\n    \"exp_year\": \"2024\",\r\n    \"cvv\": \"123\",\r\n    \"token_type\": \"card_token\",\r\n    \"account_holder_name\": \"Rishabh Rastogi\"\r\n  },\r\n  \"customer_address\": {\r\n    \"postal_code\": \"92683\",\r\n    \"state_province\": \"CA\",\r\n    \"city\": \"Long Beach\",\r\n    \"last_name\": \"Rastogi\",\r\n    \"address_line_1\": \"1234 Main st\",\r\n    \"email\": \"rishabh@example.com\",\r\n    \"country_code\": \"US\",\r\n    \"address_line_2\": \"\",\r\n    \"first_name\": \"Rishabh\"\r\n  },\r\n  \"sec_code\": \"\",\r\n  \"alert_after\": true,\r\n  \"client_customer_id\": \"asdf2332434\",\r\n  \"last_payment_date\": \"2022-01-01\",\r\n  \"last_amount\": \"154485\",\r\n  \"billing_address\": {\r\n    \"postal_code\": \"92683\",\r\n    \"state_province\": \"CA\",\r\n    \"city\": \"Long Beach\",\r\n    \"last_name\": \"Rastogi\",\r\n    \"address_line_1\": \"1234 Main st\",\r\n    \"email\": \"rishabh@example.com\",\r\n    \"country_code\": \"US\",\r\n    \"address_line_2\": \"\",\r\n    \"first_name\": \"Rishabh\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/addsubscription",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"addsubscription"
 									]
 								}
 							},
@@ -1338,12 +1379,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/AddSubscription",
+									"raw": "{{BaseURL}}/addsubscription",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"AddSubscription"
+										"addsubscription"
 									]
 								}
 							},
@@ -1379,12 +1420,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/AddSubscription",
+									"raw": "{{BaseURL}}/addsubscription",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"AddSubscription"
+										"addsubscription"
 									]
 								}
 							},
@@ -1420,12 +1461,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/AddSubscription",
+									"raw": "{{BaseURL}}/addsubscription",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"AddSubscription"
+										"addsubscription"
 									]
 								}
 							},
@@ -1461,12 +1502,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/AddSubscription",
+									"raw": "{{BaseURL}}/addsubscription",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"AddSubscription"
+										"addsubscription"
 									]
 								}
 							},
@@ -1502,12 +1543,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/AddSubscription",
+									"raw": "{{BaseURL}}/addsubscription",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"AddSubscription"
+										"addsubscription"
 									]
 								}
 							},
@@ -1543,12 +1584,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/AddSubscription",
+									"raw": "{{BaseURL}}/addsubscription",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"AddSubscription"
+										"addsubscription"
 									]
 								}
 							},
@@ -1751,12 +1792,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/DeleteSubscription/{{SubscriptionID}}",
+									"raw": "{{BaseURL}}/deletesubscription/{{SubscriptionID}}",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"DeleteSubscription",
+										"deletesubscription",
 										"{{SubscriptionID}}"
 									]
 								}
@@ -1777,7 +1818,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "",
+									"raw": "{}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1874,12 +1915,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/RequestJWT",
+									"raw": "{{BaseURL}}/requestjwt",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"RequestJWT"
+										"requestjwt"
 									]
 								}
 							},
@@ -1920,12 +1961,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/RegisterToken",
+									"raw": "{{BaseURL}}/registertoken",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"RegisterToken"
+										"registertoken"
 									]
 								}
 							},
@@ -1959,12 +2000,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/RegisterTokenExt",
+									"raw": "{{BaseURL}}/registertokenext",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"RegisterTokenExt"
+										"registertokenext"
 									]
 								}
 							},
@@ -1998,12 +2039,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/RegisterToken",
+									"raw": "{{BaseURL}}/registertoken",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"RegisterToken"
+										"registertoken"
 									]
 								}
 							},
@@ -2024,12 +2065,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/RegisterToken",
+									"raw": "{{BaseURL}}/registertoken",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"RegisterToken"
+										"registertoken"
 									]
 								}
 							},
@@ -2050,12 +2091,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{BaseURL}}/RegisterToken",
+									"raw": "{{BaseURL}}/registertoken",
 									"host": [
 										"{{BaseURL}}"
 									],
 									"path": [
-										"RegisterToken"
+										"registertoken"
 									]
 								}
 							},

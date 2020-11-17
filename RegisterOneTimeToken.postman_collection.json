@@ -33,12 +33,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{BaseURL}}/RegisterOneTimeToken",
+					"raw": "{{BaseURL}}/registeronetimetoken",
 					"host": [
 						"{{BaseURL}}"
 					],
 					"path": [
-						"RegisterOneTimeToken"
+						"registeronetimetoken"
 					]
 				}
 			},
@@ -72,12 +72,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{BaseURL}}/RegisterOneTimeToken",
+					"raw": "{{BaseURL}}/registeronetimetoken",
 					"host": [
 						"{{BaseURL}}"
 					],
 					"path": [
-						"RegisterOneTimeToken"
+						"registeronetimetoken"
 					]
 				}
 			},

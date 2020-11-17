@@ -23,12 +23,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseURL_Reports}}/GetReport/deposits",
+							"raw": "{{BaseURL_Reports}}/getreport/deposits",
 							"host": [
 								"{{BaseURL_Reports}}"
 							],
 							"path": [
-								"GetReport",
+								"getreport",
 								"deposits"
 							]
 						}
@@ -50,12 +50,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseURL_Reports}}/GetReport/deposits-detail",
+							"raw": "{{BaseURL_Reports}}/getreport/deposits-detail",
 							"host": [
 								"{{BaseURL_Reports}}"
 							],
 							"path": [
-								"GetReport",
+								"getreport",
 								"deposits-detail"
 							]
 						}
@@ -64,12 +64,15 @@
 				},
 				{
 					"name": "Batches",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"start_date\": \"2019-08-05\",\r\n  \"end_date\": \"2019-08-15\"\r\n}",
+							"raw": "{\r\n  \"start_date\": \"2017-03-01\",\r\n  \"end_date\": \"2017-04-01\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -77,12 +80,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseURL_Reports}}/GetReport/batches",
+							"raw": "{{BaseURL_Reports}}/getreport/batches",
 							"host": [
 								"{{BaseURL_Reports}}"
 							],
 							"path": [
-								"GetReport",
+								"getreport",
 								"batches"
 							]
 						}
@@ -104,12 +107,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseURL_Reports}}/GetReport/achrejects",
+							"raw": "{{BaseURL_Reports}}/getreport/achrejects",
 							"host": [
 								"{{BaseURL_Reports}}"
 							],
 							"path": [
-								"GetReport",
+								"getreport",
 								"achrejects"
 							]
 						}
@@ -131,12 +134,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseURL_Reports}}/GetReport/trxnactivity",
+							"raw": "{{BaseURL_Reports}}/getreport/trxnactivity",
 							"host": [
 								"{{BaseURL_Reports}}"
 							],
 							"path": [
-								"GetReport",
+								"getreport",
 								"trxnactivity"
 							]
 						}
@@ -158,12 +161,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseURL_Reports}}/GetReport/chargebacks",
+							"raw": "{{BaseURL_Reports}}/getreport/chargebacks",
 							"host": [
 								"{{BaseURL_Reports}}"
 							],
 							"path": [
-								"GetReport",
+								"getreport",
 								"chargebacks"
 							]
 						}
@@ -185,12 +188,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseURL_Reports}}/GetReport/activesubscriptions",
+							"raw": "{{BaseURL_Reports}}/getreport/activesubscriptions",
 							"host": [
 								"{{BaseURL_Reports}}"
 							],
 							"path": [
-								"GetReport",
+								"getreport",
 								"activesubscriptions"
 							]
 						}
@@ -212,12 +215,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseURL_Reports}}/GetReport/suspendedsubscriptions",
+							"raw": "{{BaseURL_Reports}}/getreport/suspendedsubscriptions",
 							"host": [
 								"{{BaseURL_Reports}}"
 							],
 							"path": [
-								"GetReport",
+								"getreport",
 								"suspendedsubscriptions"
 							]
 						}
@@ -239,12 +242,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseURL_Reports}}/GetReport/wallettrouble",
+							"raw": "{{BaseURL_Reports}}/getreport/wallettrouble",
 							"host": [
 								"{{BaseURL_Reports}}"
 							],
 							"path": [
-								"GetReport",
+								"getreport",
 								"wallettrouble"
 							]
 						}
@@ -258,7 +261,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"start_date\": \"2019-08-05\",\r\n  \"end_date\": \"2019-08-15\"\r\n}",
+							"raw": "{\r\n  \"start_date\": \"2020-10-01\",\r\n  \"end_date\": \"2020-10-30\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -266,12 +269,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseURL_Reports}}/GetReport/newpayments",
+							"raw": "{{BaseURL_Reports}}/getreport/newpayments",
 							"host": [
 								"{{BaseURL_Reports}}"
 							],
 							"path": [
-								"GetReport",
+								"getreport",
 								"newpayments"
 							]
 						}
@@ -293,12 +296,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseURL_Reports}}/GetReport/failedpayments",
+							"raw": "{{BaseURL_Reports}}/getreport/failedpayments",
 							"host": [
 								"{{BaseURL_Reports}}"
 							],
 							"path": [
-								"GetReport",
+								"getreport",
 								"failedpayments"
 							]
 						}
@@ -320,12 +323,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseURL_Reports}}/GetReport/failedpayments",
+							"raw": "{{BaseURL_Reports}}/getreport/failedpayments",
 							"host": [
 								"{{BaseURL_Reports}}"
 							],
 							"path": [
-								"GetReport",
+								"getreport",
 								"failedpayments"
 							]
 						}
